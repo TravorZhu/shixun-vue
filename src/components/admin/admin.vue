@@ -73,9 +73,9 @@
             <a><i class="fa fa-circle text-success"></i> 在线</a>
           </div>
         </div>
-        <!-- sidebar menu: : style can be found in sidebar.less -->
+
         <ul class="sidebar-menu" data-widget="tree">
-          <!--        <li class="header">MAIN NAVIGATION</li>-->
+
           <li :class="userbool? 'active treeview menu-open' : 'treeview'">
             <a v-on:click="userbool=!userbool">
               <i class="fa fa-dashboard"></i> <span>用户操作</span>
@@ -120,9 +120,9 @@
 </template>
 
 <script>
-import $ from 'jquery'
+  import $ from 'jquery'
 
-export default {
+  export default {
   name: 'admin',
   data () {
     return {
@@ -154,7 +154,7 @@ export default {
         success: d => {
           // console.log(d)
           if (d.status === 200) {
-            this.$router.push('login')
+            this.$router.push({name: 'login'})
           } else {
             this.errormsg = d.msg
           }

@@ -39,9 +39,9 @@
 
 <script>
 
-import $ from 'jquery'
+  import $ from 'jquery'
 
-export default {
+  export default {
 
   name: 'login',
   data () {
@@ -66,12 +66,12 @@ export default {
     var data = {
       'uniqueToken': this.$store.token
     }
-    if (this.$store.token === '') { return }
+    if (this.$store.token === '' || this.$store.token == null) { return }
     $.ajax({
       // method: "POST",
       type: 'POST',
       url: 'http://120.78.78.174:6233/user/logout',
-      async: false, // 使用同步方式
+      // async: false, // 使用同步方式
       // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
       // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}
       // headers:{"Authorization":""},
@@ -100,7 +100,7 @@ export default {
     login: function (e) {
       // this.$store.token = '233333'
       // this.$store.type = 'admin'
-      const store = this.$store
+      // const store = this.$store
       // console.log(store)
       this.error = ''
       // this.$router.push('admin')
@@ -124,9 +124,9 @@ export default {
         success: d => {
           console.log(d)
           if (d.status === 200) {
-            console.log(this.store)
-            store.token = d.data.uniqueToken
-            store.type = d.data.usertype
+            // console.log(this.store)
+            this.$store.token = d.data.uniqueToken
+            this.$store.type = d.data.usertype
             console.log(this.$store)
             switch (this.$store.type) {
               case 'student':

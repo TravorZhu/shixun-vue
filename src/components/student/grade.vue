@@ -79,8 +79,9 @@
 </template>
 
 <script>
-import $ from 'jquery'
-export default {
+  import $ from 'jquery'
+
+  export default {
   name: 'grade',
   data () {
     return {
@@ -95,6 +96,8 @@ export default {
   },
   methods: {
     getin: function (cid) {
+      if (cid == null) { return }
+      // console.log(this.courseGradesMap[cid])
       this.$router.push({name: 'courseGrade', params: this.courseGradesMap[cid]})
     }
   },
@@ -180,7 +183,7 @@ export default {
       $.ajax({
         // method: "POST",
         type: 'POST',
-        url: 'http://120.78.78.174:6233/stu/getExamScore',
+        url: 'http://120.78.78.174:6233/stu/getRollCallScore',
 
         async: false, // 使用同步方式
         // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
@@ -193,7 +196,7 @@ export default {
           if (d.status === 200) {
             allCourseScore[k]['roll-call-score'] = d.data
             d.data.forEach(function (item, index) {
-              allCourseScore[k]['totalscore'] += 0.01 * item.score * item.percentage
+              if (item.status !== 'absence') { allCourseScore[k]['totalscore'] += item.percentage }
             })
           }
         }
@@ -209,6 +212,7 @@ export default {
       count++
     }
     this.adv = (1.0 * sum / count)
+    this.courseGrades[this.courseGrades.length] = {uname: '平均成绩', totalscore: this.adv}
     console.log(this.courseGrades)
   }
 }

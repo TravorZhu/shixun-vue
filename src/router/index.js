@@ -15,6 +15,8 @@ import student from '../components/student/student'
 import notice from '../components/student/notice'
 import grade from '../components/student/grade'
 import courseGrade from '../components/student/courseGrade'
+import getHomework from '../components/student/getHomework'
+import selectCourse from '../components/student/selectCourse'
 
 Vue.use(Router)
 
@@ -98,6 +100,11 @@ export default new Router({
           component: notice
         },
         {
+          path: '/',
+          name: 'showNotice',
+          component: notice
+        },
+        {
           path: 'grade',
           name: 'grade',
           component: grade
@@ -106,6 +113,16 @@ export default new Router({
           path: 'courseGrade',
           name: 'courseGrade',
           component: courseGrade
+        },
+        {
+          path: 'getHomework',
+          name: 'getHomework',
+          component: getHomework
+        },
+        {
+          path: 'selectCourse',
+          name: 'selectCourse',
+          component: selectCourse
         }
       ]
     }

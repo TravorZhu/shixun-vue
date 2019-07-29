@@ -19,7 +19,7 @@
             <h3 class="box-title">所有课程</h3>
             <div class="box-tools">
               <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"
+                <input type="text" name="table_search" class="form-control pull-right" placeholder="输入课程名称..."
                        v-model="filters.name.value">
 
                 <!--                  <div class="input-group-btn">-->
@@ -91,8 +91,9 @@
 </template>
 
 <script>
-import $ from 'jquery'
-export default {
+  import $ from 'jquery'
+
+  export default {
   name: 'listAllCourse',
   data () {
     return {

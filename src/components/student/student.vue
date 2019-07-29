@@ -66,13 +66,13 @@
                 <span>成绩查询</span>
               </a>
             </router-link>
-            <router-link tag="li" active-class="active" class="treeview" to="/student/notice">
+            <router-link tag="li" active-class="active" class="treeview" to="/student/getHomework">
               <a>
                 <i class="fa fa-pie-chart"></i>
                 <span>作业提交</span>
               </a>
             </router-link>
-            <router-link tag="li" active-class="active" class="treeview" to="/student/notice">
+            <router-link tag="li" active-class="active" class="treeview" to="/student/selectCourse">
               <a>
                 <i class="fa fa-th"></i>
                 <span>网上选课</span>
@@ -89,8 +89,9 @@
 </template>
 
 <script>
-import $ from 'jquery'
-export default {
+  import $ from 'jquery'
+
+  export default {
   name: 'student',
   data () {
     return {

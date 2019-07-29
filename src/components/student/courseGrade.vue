@@ -62,20 +62,34 @@ export default {
   name: 'courseGrade',
   data () {
     return {
-      courseGrades: []
+      courseGrades: [],
+      rollCallMap: {attend: '出席', absence: '缺席', leave: '请假', other: '其他'}
+    }
+  },
+  methods: {
+    formatDate: function (date) {
+      return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate()
     }
   },
   created () {
-    // console.log(this.$route.params['exam-score'])
+    console.log(this.$route)
     var t
     for (var i in this.$route.params['exam-score']) {
       t = this.$route.params['exam-score'][i]
-      this.courseGrades[this.courseGrades.length] = { type: '考试', score: t.score, per: t.percentage }
+      // console.log(t)
+      this.courseGrades[this.courseGrades.length] = { type: t.etitle, score: t.score, per: t.percentage }
     }
     for (var j in this.$route.params['homework-score']) {
       t = this.$route.params['homework-score'][j]
-      this.courseGrades[this.courseGrades.length] = { type: '作业', score: t.score, per: t.percentage }
+      // console.log(t)
+      this.courseGrades[this.courseGrades.length] = { type: t.htitle, score: t.score, per: t.percentage }
     }
+    for (var k in this.$route.params['homework-score']) {
+      t = this.$route.params['roll-call-score'][k]
+      // console.log(t)
+      this.courseGrades[this.courseGrades.length] = { type: this.formatDate(new Date(t.calltime)) + '点名', score: this.rollCallMap[t.status], per: t.percentage }
+    }
+    this.courseGrades[this.courseGrades.length] = { type: '总成绩', score: this.$route.params['totalscore'], per: '' }
     console.log(this.courseGrades)
   }
 }
