@@ -17,6 +17,10 @@ import grade from '../components/student/grade'
 import courseGrade from '../components/student/courseGrade'
 import getHomework from '../components/student/getHomework'
 import selectCourse from '../components/student/selectCourse'
+import teacher from '../components/teacher/teacher'
+import pushNotice from '../components/teacher/pushNotice'
+import examScoreSubmit from '../components/teacher/examScoreSubmit'
+import addExam from '../components/teacher/addExam'
 
 Vue.use(Router)
 
@@ -125,11 +129,36 @@ export default new Router({
           component: selectCourse
         }
       ]
+    }, {
+      path: '/teacher',
+      name: 'teacher',
+      component: teacher,
+      beforeEnter: function (to, from, next) {
+        if (store.type === 'teacher') {
+          next()
+        } else if (store.type === 'admin') {
+          next('/admin')
+        } else if (store.type === 'student') {
+          next('/student')
+        } else {
+          next('/')
+        }
+      },
+      children: [
+        {
+          path: 'pushNotice',
+          name: 'pushNotice',
+          component: pushNotice
+        }, {
+          path: 'examScoreSubmit',
+          name: 'examScoreSubmit',
+          component: examScoreSubmit
+        }, {
+          path: 'addExam',
+          name: 'addExam',
+          component: addExam
+        }
+      ]
     }
-    // {
-    //   path: '/',
-    //   name: 'starter',
-    //   component: starter
-    // }
   ]
 })

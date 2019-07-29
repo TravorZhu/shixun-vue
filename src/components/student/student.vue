@@ -5,9 +5,9 @@
         <!-- Logo -->
         <a class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>A</b>LT</span>
+          <span class="logo-mini"><b>H</b>QU</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Hqu</b>LTE</span>
+          <span class="logo-lg"><b>HQU</b>Course</span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -20,12 +20,12 @@
             <ul class="nav navbar-nav">
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <img src="../../assets/user2-160x160.jpg" class="user-image" alt="User Image">
                   <span class="hidden-xs">{{uname}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <li class="user-header">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="../../assets/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
                       {{uname}}
                     </p>
@@ -46,7 +46,7 @@
         <section class="sidebar">
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <img src="../../assets/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p>{{uname}}</p>
@@ -89,9 +89,9 @@
 </template>
 
 <script>
-  import $ from 'jquery'
+import $ from 'jquery'
 
-  export default {
+export default {
   name: 'student',
   data () {
     return {

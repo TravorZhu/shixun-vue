@@ -91,9 +91,9 @@
 </template>
 
 <script>
-  import $ from 'jquery'
+import $ from 'jquery'
 
-  export default {
+export default {
   name: 'listAllCourse',
   data () {
     return {

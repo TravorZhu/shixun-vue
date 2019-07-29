@@ -17,13 +17,15 @@ import 'ionicons/dist/css/ionicons.min.css'
 import Vuex from 'vuex'
 import store from './store/index.js'
 import SmartTable from 'vuejs-smart-table'
+import CKEditor from '@ckeditor/ckeditor5-vue'
 
+Vue.use(CKEditor)
 Vue.use(SmartTable)
 
 // eslint-disable-next-line
-window.$ = $;
+window.$ = $
 // eslint-disable-next-line
-window.jQuery = $;
+window.jQuery = $
 
 Vue.config.productionTip = false
 Vue.use(Vuex)
@@ -33,6 +35,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })

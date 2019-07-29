@@ -81,7 +81,6 @@
       success: d => {
         // console.log(d)
         if (d.status === 200) {
-          this.$router.push('login')
         } else {
           this.errormsg = d.msg
         }

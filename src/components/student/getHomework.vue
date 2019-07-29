@@ -42,13 +42,12 @@
                 </thead>
                 <tbody slot="body" slot-scope="{displayData}">
                 <tr v-for="item in displayData" :key="item.hid">
-                  <td><a v-bind:href="'http://localhost:8080/student/download/'+item.hfilepath">{{item.htitle}}</a></td>
+                  <td><a v-bind:href="'http://120.78.78.174:6233/student/download/'+item.hfilepath">{{item.htitle}}</a></td>
                   <td>{{item.cname}}</td>
                   <td>{{item.hdate}}</td>
                   <td><input type="file" v-bind:id="'file'+item.hid" style="display: none"/><button class="btn btn-file" v-on:click="upload(item.hid)">上传文件</button></td>
                   <td><button class="btn btn-facebook" v-on:click="submit(item.hid)">提交</button></td>
                 </tr>
-
                 </tbody>
               </v-table>
             </div>
@@ -70,9 +69,9 @@
 </template>
 
 <script>
-  import $ from 'jquery'
+import $ from 'jquery'
 
-  export default {
+export default {
   name: 'get-homework',
   data () {
     return {

@@ -1,6 +1,7 @@
 # vue-admin-lte
 
-> A Vue.js project
+> A Vue.js 实训 project
+> 以丁奕辉帝国
 
 ## Build Setup
 

@@ -84,8 +84,12 @@
             </span>
             </a>
             <ul class="treeview-menu">
-              <li id="add-user" ><router-link to="/admin/adduser"><i class="fa fa-circle-o active"></i> 添加用户</router-link></li>
-              <li id="show-all-user"><router-link to="/admin/listAllUser"><i class="fa fa-circle-o"></i> 修改删除用户</router-link></li>
+              <li id="add-user">
+                <router-link to="/admin/adduser"><i class="fa fa-circle-o active"></i> 添加用户</router-link>
+              </li>
+              <li id="show-all-user">
+                <router-link to="/admin/listAllUser"><i class="fa fa-circle-o"></i> 修改删除用户</router-link>
+              </li>
             </ul>
           </li>
           <li :class="coursebool? 'active treeview menu-open' : 'treeview'">
@@ -97,8 +101,12 @@
             </span>
             </a>
             <ul class="treeview-menu">
-              <li id="add-course"><router-link to="/admin/addCourse"><i class="fa fa-circle-o"></i>添加课程</router-link></li>
-              <li id="show-all-course"><router-link to="/admin/listAllCourse"><i class="fa fa-circle-o"></i>修改删除课程</router-link></li>
+              <li id="add-course">
+                <router-link to="/admin/addCourse"><i class="fa fa-circle-o"></i>添加课程</router-link>
+              </li>
+              <li id="show-all-course">
+                <router-link to="/admin/listAllCourse"><i class="fa fa-circle-o"></i>修改删除课程</router-link>
+              </li>
             </ul>
           </li>
           <li>
