@@ -66,14 +66,14 @@ export default {
     }
   },
   created () {
-    console.log(this.$route.params['exam-score'])
+    // console.log(this.$route.params['exam-score'])
     var t
     for (var i in this.$route.params['exam-score']) {
       t = this.$route.params['exam-score'][i]
       this.courseGrades[this.courseGrades.length] = { type: '考试', score: t.score, per: t.percentage }
     }
     for (var j in this.$route.params['homework-score']) {
-      t = this.$route.params['exam-score'][j]
+      t = this.$route.params['homework-score'][j]
       this.courseGrades[this.courseGrades.length] = { type: '作业', score: t.score, per: t.percentage }
     }
     console.log(this.courseGrades)
