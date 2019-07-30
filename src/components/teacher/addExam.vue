@@ -25,7 +25,7 @@
               <form role="form">
                 <div class="form-group" id="usertype-form">
                   <label>课程</label>
-                  <select class="form-control" name="state" v-model="cid">
+                  <select class="form-control" name="state" v-model="cid" v-on:change="eid=cid+parseInt(Math.random()*100000,10)+1">
                     <option v-for="i in courselist" v-bind:value="i.cid" v-bind:key="i.cid">{{i.cname}}</option>
                   </select>
                 </div>
@@ -36,6 +36,10 @@
                 <div class="form-group" id="cname-form">
                   <label>考试名称</label>
                   <input id="cname" type="text" class="form-control" placeholder="输入 ..." v-model="etitle">
+                </div>
+                <div class="form-group" id="etime-form">
+                  <label>考试时间</label>
+                  <input id="etime" type="text" class="form-control" placeholder="输入 ..." v-model="etime">
                 </div>
                 <div class="form-group" id="tid-form">
                   <label>成绩所占百分比</label>
@@ -66,8 +70,9 @@ export default {
       cid: '',
       eid: '',
       etitle: '',
+      etime: '',
       percentage: '',
-      courselist: '',
+      courselist: [],
       errormsg: '',
       success: ''
     }
@@ -108,12 +113,13 @@ export default {
         'eid': this.eid,
         'etitle': this.etitle,
         'percentage': this.percentage,
-        'etime': this.etime
+        'etime': this.etime,
+        'cid': this.cid
       }
       $.ajax({
         // method: "POST",
         type: 'POST',
-        url: 'http://120.78.78.174:6233/teacher/getAllCourse',
+        url: 'http://120.78.78.174:6233/teacher/publishExam',
         async: false, // 使用同步方式
         // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
         // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}

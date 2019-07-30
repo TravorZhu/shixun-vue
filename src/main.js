@@ -12,13 +12,13 @@ import 'admin-lte/dist/css/skins/_all-skins.min.css'
 import 'admin-lte/dist/js/adminlte.min'
 import 'fastclick/lib/fastclick'
 import 'jquery-sparkline/jquery.sparkline.min'
-// import 'admin-lte/dist/js/pages/dashboard2'
 import 'ionicons/dist/css/ionicons.min.css'
 import Vuex from 'vuex'
 import store from './store/index.js'
 import SmartTable from 'vuejs-smart-table'
 import CKEditor from '@ckeditor/ckeditor5-vue'
 
+Vue.use(require('vue-cookies'))
 Vue.use(CKEditor)
 Vue.use(SmartTable)
 

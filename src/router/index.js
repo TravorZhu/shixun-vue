@@ -21,6 +21,9 @@ import teacher from '../components/teacher/teacher'
 import pushNotice from '../components/teacher/pushNotice'
 import examScoreSubmit from '../components/teacher/examScoreSubmit'
 import addExam from '../components/teacher/addExam'
+import pushHomework from '../components/teacher/pushHomework'
+import logout from '../components/logout'
+import rollCall from '../components/teacher/rollCall'
 
 Vue.use(Router)
 
@@ -28,6 +31,15 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/login'
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: logout
+    },
+    {
+      path: '/login',
       name: 'login',
       component: login
     }, {
@@ -48,7 +60,7 @@ export default new Router({
       children: [
         {
           path: '/',
-          component: listAllUser
+          redirect: 'listAllUser'
         },
         {
           path: 'adduser',
@@ -99,6 +111,10 @@ export default new Router({
       },
       children: [
         {
+          path: '/',
+          redirect: 'notice'
+        },
+        {
           path: 'notice',
           name: 'showNotice',
           component: notice
@@ -146,17 +162,33 @@ export default new Router({
       },
       children: [
         {
+          path: '/',
+          redirect: 'pushNotice'
+        },
+        {
           path: 'pushNotice',
           name: 'pushNotice',
           component: pushNotice
-        }, {
+        },
+        {
           path: 'examScoreSubmit',
           name: 'examScoreSubmit',
           component: examScoreSubmit
-        }, {
+        },
+        {
           path: 'addExam',
           name: 'addExam',
           component: addExam
+        },
+        {
+          path: 'pushHomework',
+          name: 'pushHomework',
+          component: pushHomework
+        },
+        {
+          path: 'rollCall',
+          name: 'rollCall',
+          component: rollCall
         }
       ]
     }

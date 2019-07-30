@@ -14,7 +14,7 @@
         <div class="box-header with-border">
           <div class="user-block"><span class="username">{{item.title}}</span><span class="description">{{item.des}}</span></div>
         </div>
-        <div class="box-body">{{item.content}}<br/><span class="pull-right text-muted">{{item.date}}</span></div>
+        <div class="box-body"><p v-html="item.content"></p><br/><span class="pull-right text-muted">{{item.date}}</span></div>
       </div>
     </section>
   </div>

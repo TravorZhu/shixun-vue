@@ -183,7 +183,7 @@ export default {
       $.ajax({
         // method: "POST",
         type: 'POST',
-        url: 'http://120.78.78.174:6233/stu/getExamScore',
+        url: 'http://120.78.78.174:6233/stu/getRollCallScore',
 
         async: false, // 使用同步方式
         // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
@@ -196,7 +196,9 @@ export default {
           if (d.status === 200) {
             allCourseScore[k]['roll-call-score'] = d.data
             d.data.forEach(function (item, index) {
-              allCourseScore[k]['totalscore'] += 0.01 * item.score * item.percentage
+              if (item.status !== 'absence') {
+                allCourseScore[k]['totalscore'] += item.percentage
+              }
             })
           }
         }

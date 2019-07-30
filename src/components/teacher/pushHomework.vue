@@ -2,13 +2,13 @@
   <div>
     <section class="content-header">
       <h1>
-        添加考试
+        发布作业
         <!--        <small>Advanced form element</small>-->
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>主页</a></li>
-        <li><a href="#">考试</a></li>
-        <li class="active">添加考试</li>
+        <li><a href="#">作业</a></li>
+        <li class="active">发布作业</li>
       </ol>
     </section>
     <section class="content">
@@ -16,36 +16,44 @@
         <div class="col-md-12">
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">添加考试</h3>
+              <h3 class="box-title">发布作业</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="alert alert-success" v-if="success">{{success}}</div>
               <div class="alert alert-error" v-if="errormsg!==''">{{errormsg}}</div>
-              <form role="form">
-                <div class="form-group" id="usertype-form">
-                  <label>课程</label>
-                  <select class="form-control" name="state" v-model="cid" v-on:change="hid=cid+parseInt(Math.random()*100000,10)+1">
-                    <option v-for="i in courselist" v-bind:value="i.cid" v-bind:key="i.cid">{{i.cname}}</option>
-                  </select>
-                </div>
-                <div class="form-group" id="cid-form">
-                  <label>作业ID</label>
-                  <input type="text" class="form-control" placeholder="输入 ..." v-model="hid">
-                </div>
-                <div class="form-group" id="cname-form">
-                  <label>作业名称</label>
-                  <input type="text" class="form-control" placeholder="输入 ..." v-model="htitle">
-                </div>
-                <div class="form-group" id="tid-form">
-                  <label>作业文件</label>
-                  <input id="hfile" type='file' class="form-control" v-if="false">
-                  <button class="btn btn-file" v-on:click="upload">上传文件</button>{{filename}}
-                </div>
-                <div class="box-footer">
-                  <button class="btn btn-primary" v-on:click="submit">提交</button>
-                </div>
-              </form>
+              <div class="form-group" id="usertype-form">
+                <label>课程</label>
+                <select class="form-control" name="state" v-model="cid"
+                        v-on:change="hid=cid+parseInt(Math.random()*100000,10)+1">
+                  <option v-for="i in courselist" v-bind:value="i.cid" v-bind:key="i.cid">{{i.cname}}</option>
+                </select>
+              </div>
+              <div class="form-group" id="cid-form">
+                <label>作业ID</label>
+                <input type="text" class="form-control" placeholder="输入 ..." v-model="hid">
+              </div>
+              <div class="form-group" id="cname-form">
+                <label>作业名称</label>
+                <input type="text" class="form-control" placeholder="输入 ..." v-model="htitle">
+              </div>
+              <div class="form-group" id="tid-form">
+                <label>作业文件</label><br />
+                <input id="hfile" type='file' class="form-control" style="display: none" v-on:change="fileUpdate">
+                <button class="btn btn-facebook" v-on:click="upload">上传文件</button>
+                {{filename}}
+              </div>
+              <div class="form-group" id="hdate">
+                <label>截止时间</label>
+                <input type="text" class="form-control" placeholder="输入 ..." v-model="hdate">
+              </div>
+              <div class="form-group" id="percentage">
+                <label>作业分数比例</label>
+                <input type="text" class="form-control" placeholder="输入 ..." v-model="percentage">
+              </div>
+              <div class="box-footer">
+                <button class="btn btn-primary" v-on:click="submit">提交</button>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -60,6 +68,7 @@
 
 <script>
 import $ from 'jquery'
+
 export default {
   name: 'pushHomework',
   data () {
@@ -67,10 +76,12 @@ export default {
       cid: '',
       hid: '',
       htitle: '',
-      courselist: '',
+      hdate: '',
+      courselist: [],
       errormsg: '',
       success: '',
-      filename: ''
+      filename: '',
+      percentage: ''
     }
   },
   created () {
@@ -105,20 +116,25 @@ export default {
   methods: {
     upload: function () {
       $('#hfile').click()
+      console.log($('#hfile'))
     },
     fileUpdate: function () {
-      this.filename = $('#hfile').files[0].name
+      this.filename = $('#hfile')[0].files[0].name
     },
     submit: function () {
+      this.success = ''
+      this.errormsg = ''
       var form = new FormData()
-      form.push('uniqueToken', this.$store.token)
-      form.push('cid', this.cid)
-      form.push('hid', this.hid)
-      form.push('htitle', this.htitle)
-      form.push('file', $('#file')[0].files[0])
+      form.append('uniqueToken', this.$store.token)
+      form.append('cid', this.cid)
+      form.append('hid', this.hid)
+      form.append('htitle', this.htitle)
+      form.append('hdate', this.hdate)
+      form.append('percentage', this.percentage)
+      form.append('file', $('#hfile')[0].files[0])
       $.ajax({
         // TODO:发布作业
-        url: 'http://120.78.78.174:6233/teacher/',
+        url: 'http://120.78.78.174:6233/teacher/publishHomework',
         dataType: 'json',
         type: 'POST',
         async: false,
@@ -128,13 +144,15 @@ export default {
         contentType: false,
         success: (data) => {
           console.log(data)
-          if (data.status === 200) { this.success = true }
+          if (data.status === 200) {
+            this.success = data.msg
+          }
         },
         error: (response) => {
           this.errormsg = response.msg
         }
       })
-    },
+    }
   }
 }
 </script>

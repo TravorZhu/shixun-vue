@@ -45,7 +45,7 @@
                 <li class="user-footer">
 
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat" v-on:click="logout">登出</a>
+                    <router-link :to="'/logout'" href="#" class="btn btn-default btn-flat">登出</router-link>
                   </div>
                 </li>
               </ul>
@@ -128,9 +128,9 @@
 </template>
 
 <script>
-  import $ from 'jquery'
+import $ from 'jquery'
 
-  export default {
+export default {
   name: 'admin',
   data () {
     return {
@@ -140,39 +140,34 @@
       coursebool: false
     }
   },
-  created: function () {
-    console.log(this.$store.token)
-  },
-  methods: {
-    logout: function () {
-      var data = {
-        'uniqueToken': this.$store.token
-      }
-      $.ajax({
-        // method: "POST",
-        type: 'POST',
-        url: 'http://120.78.78.174:6233/user/logout',
-        async: false, // 使用同步方式
-        // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
-        // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}
-        // headers:{"Authorization":""},
-        data: JSON.stringify(data),
-        contentType: 'application/json; charset=utf-8',
-        // dataType: "json",
-        success: d => {
-          // console.log(d)
-          if (d.status === 200) {
-            this.$router.push({name: 'login'})
-          } else {
-            this.errormsg = d.msg
-          }
-        }, // 注意不要在此行增加逗号,
-        error: function (e) {
-          console.log(e)
-          this.errormsg = '服务器连接出错'
-        }
-      })
+  created () {
+    var data = {
+      'uniqueToken': this.$store.token
     }
+    $.ajax({
+      // method: "POST",
+      type: 'POST',
+      url: 'http://120.78.78.174:6233/user/getUname',
+      async: false, // 使用同步方式
+      // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
+      // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}
+      // headers:{"Authorization":""},
+      data: JSON.stringify(data),
+      contentType: 'application/json; charset=utf-8',
+      // dataType: "json",
+      success: d => {
+        // console.log(d)
+        if (d.status === 200) {
+          this.username = d.msg
+        } else {
+          this.errormsg = d.msg
+        }
+      }, // 注意不要在此行增加逗号,
+      error: function (e) {
+        console.log(e)
+        this.errormsg = '服务器连接出错'
+      }
+    })
   }
 }
 </script>

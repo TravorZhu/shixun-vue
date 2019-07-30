@@ -28,6 +28,12 @@
                     <small>培养优秀的学生是我的职责</small>
                   </p>
                 </li>
+                <li class="user-footer">
+
+                  <div class="pull-right">
+                    <router-link href="#" class="btn btn-default btn-flat" :to="'/logout'">登出</router-link>
+                  </div>
+                </li>
               </ul>
             </li>
 
@@ -73,11 +79,11 @@
 、
             </ul>
           </li>
-          <li id="dianming">
+          <router-link tag="li" active-class="active" :to="'/teacher/rollCall'">
             <a href="#">
               <i class="fa fa-pie-chart"></i>点名
             </a>
-          </li>
+          </router-link>
 
           <li class="treeview" :class="homeworkbool? 'treeview menuopen active' : 'treeview'">
             <a href="#" v-on:click="homeworkbool=!homeworkbool">
@@ -89,7 +95,7 @@
             </a>
             <ul class="treeview-menu">
               <li id="updateHomework"><a href="#"><i class="fa fa-circle-o"></i>批改作业</a></li>
-              <li id="update-course"><a href="#"><i class="fa fa-circle-o"></i>发布作业</a></li>
+              <router-link tag="li" active-class="active" :to="'/teacher/pushHomework'"><a href="#"><i class="fa fa-circle-o"></i>发布作业</a></router-link>
             </ul>
           </li>
         </ul>
@@ -104,6 +110,7 @@
 
 <script>
 import $ from 'jquery'
+import 'admin-lte/dist/js/adminlte.min'
 
 export default {
   name: 'teacher',

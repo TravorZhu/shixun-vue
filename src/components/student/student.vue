@@ -33,7 +33,7 @@
                   <li class="user-footer">
 
                     <div class="pull-right">
-                      <router-link href="#" class="btn btn-default btn-flat" to="/login">登出</router-link>
+                      <router-link href="#" class="btn btn-default btn-flat" :to="'/logout'">登出</router-link>
                     </div>
                   </li>
                 </ul>

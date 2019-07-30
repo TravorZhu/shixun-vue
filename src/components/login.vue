@@ -39,9 +39,9 @@
 
 <script>
 
-  import $ from 'jquery'
+import $ from 'jquery'
 
-  export default {
+export default {
 
   name: 'login',
   data () {
@@ -63,10 +63,24 @@
     }
   },
   created: function () {
+    switch (this.$cookies.get('usertype')) {
+      case 'student':
+        this.$router.push('student')
+        break
+      case 'teacher':
+        this.$router.push('teacher')
+        break
+      case 'admin':
+        this.$router.push('admin')
+        break
+    }
+    if (this.$store.token === '' || this.$store.token == null) {
+      this.$store.token = this.$cookies.get('token')
+    }
+    if (this.$store.token === '' || this.$store.token == null) { return }
     var data = {
       'uniqueToken': this.$store.token
     }
-    if (this.$store.token === '' || this.$store.token == null) { return }
     $.ajax({
       // method: "POST",
       type: 'POST',
@@ -76,19 +90,8 @@
       // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}
       // headers:{"Authorization":""},
       data: JSON.stringify(data),
-      contentType: 'application/json; charset=utf-8',
+      contentType: 'application/json; charset=utf-8'
       // dataType: "json",
-      success: d => {
-        // console.log(d)
-        if (d.status === 200) {
-        } else {
-          this.errormsg = d.msg
-        }
-      }, // 注意不要在此行增加逗号,
-      error: function (e) {
-        console.log(e)
-        this.errormsg = '服务器连接出错'
-      }
     })
     this.$store.token = ''
     this.$store.type = ''
@@ -98,7 +101,7 @@
   methods: {
     login: function (e) {
       // this.$store.token = '233333'
-      // this.$store.type = 'admin'
+      this.$store.type = 'teacher'
       // const store = this.$store
       // console.log(store)
       this.error = ''

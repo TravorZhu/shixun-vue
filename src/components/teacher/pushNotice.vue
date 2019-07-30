@@ -21,6 +21,8 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
+              <div class="alert alert-success" v-if="success!==''">{{success}}</div>
+              <div class="alert alert-error" v-if="errormsg!==''">{{errormsg}}</div>
 
               <div class="form-group" id="cid-form">
                 <label>通知标题</label>
@@ -36,13 +38,6 @@
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary" v-on:click="submit">提交</button>
               </div>
-            </div>
-            <div class="box-footer clearfix">
-              <smart-pagination
-                :currentPage.sync="currentPage"
-                :totalPages="totalPages"
-                class="pagination pagination-sm no-margin pull-right"
-              />
             </div>
           </div>
         </div>
@@ -110,32 +105,34 @@ export default {
       var data = {
         uniqueToken: this.$store.token,
         ntitle: this.ntitle,
-        ncontent: this.editorData
+        content: this.editorData,
+        cid: this.cid
       }
       console.log(data)
-      // $.ajax({
-      //   // method: "POST",
-      //   type: 'POST',
-      //   url: 'http://120.78.78.174:6233/stu/getAllCourse',
-      //
-      //   async: false, // 使用同步方式
-      //   // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
-      //   // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}
-      //   // headers:{"Authorization":""},
-      //   data: JSON.stringify(data),
-      //   contentType: 'application/json; charset=utf-8',
-      //   // dataType: "json",
-      //   success: (d) => {
-      //     if (d.status === 200) {
-      //       this.success = d.msg;
-      //     } else {
-      //       this.errormsg = d.msg
-      //     }
-      //   }, // 注意不要在此行增加逗号,
-      //   error: function (e) {
-      //     this.errormsg = e.msg
-      //   }
-      // })
+      $.ajax({
+        // method: "POST",
+        type: 'POST',
+        // TODO:发布公告
+        url: 'http://120.78.78.174:6233/teacher/publishNotice',
+
+        async: false, // 使用同步方式
+        // 1 需要使用JSON.stringify 否则格式为 a=2&b=3&now=14...
+        // 2 需要强制类型转换，否则格式为 {"a":"2","b":"3"}
+        // headers:{"Authorization":""},
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        // dataType: "json",
+        success: (d) => {
+          if (d.status === 200) {
+            this.success = d.msg
+          } else {
+            this.errormsg = d.msg
+          }
+        }, // 注意不要在此行增加逗号,
+        error: function (e) {
+          this.errormsg = e.msg
+        }
+      })
     }
   }
 }
