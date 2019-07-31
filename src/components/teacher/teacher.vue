@@ -36,10 +36,6 @@
                 </li>
               </ul>
             </li>
-
-            <li>
-              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-            </li>
           </ul>
         </div>
       </nav>
@@ -94,7 +90,7 @@
                             </span>
             </a>
             <ul class="treeview-menu">
-              <li id="updateHomework"><a href="#"><i class="fa fa-circle-o"></i>批改作业</a></li>
+              <router-link tag="li" active-class="active" :to="'/teacher/submitHomeworkScore'"><a href="#"><i class="fa fa-circle-o"></i>批改作业</a></router-link>
               <router-link tag="li" active-class="active" :to="'/teacher/pushHomework'"><a href="#"><i class="fa fa-circle-o"></i>发布作业</a></router-link>
             </ul>
           </li>
@@ -105,6 +101,13 @@
       <router-view>
       </router-view>
     </div>
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 0.0.01
+      </div>
+      <strong>Copyright &copy; 2019 <a href="#">HQU Course</a>.</strong> All rights
+      reserved.
+    </footer>
   </div>
 </template>
 

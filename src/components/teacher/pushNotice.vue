@@ -34,7 +34,7 @@
                   <option v-for="i in courselist" v-bind:value="i.cid" v-bind:key="i.cid">{{i.cname}}</option>
                 </select>
               </div>
-              <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+              <ckeditor :editor="editor" v-model="editorData" :config="editorConfig" :height="'300px'"></ckeditor>
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary" v-on:click="submit">提交</button>
               </div>
@@ -139,5 +139,7 @@ export default {
 </script>
 
 <style scoped>
-
+.ck-editor__editable {
+  min-height: 500px;
+}
 </style>

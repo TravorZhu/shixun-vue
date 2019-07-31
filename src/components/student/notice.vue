@@ -10,11 +10,13 @@
       </ol>
     </section>
     <section class="content">
-      <div class="box box-widget" v-for="item in notices" v-bind:key="item.title+item.content">
+      <div class="col-md-6" v-for="item in notices" v-bind:key="item.title+item.content">
+      <div class="box box-widget">
         <div class="box-header with-border">
           <div class="user-block"><span class="username">{{item.title}}</span><span class="description">{{item.des}}</span></div>
         </div>
         <div class="box-body"><p v-html="item.content"></p><br/><span class="pull-right text-muted">{{item.date}}</span></div>
+      </div>
       </div>
     </section>
   </div>

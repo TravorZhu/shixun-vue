@@ -5,7 +5,7 @@
         作业提交 - 所有课程
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>主页</a></li>
+        <li><router-link :to="'/student'"><i class="fa fa-dashboard"></i>主页</router-link></li>
         <li><a href="#" id="get-to-search-score">作业提交 - 所有课程</a></li>
       </ol>
     </section>
@@ -42,7 +42,7 @@
                 </thead>
                 <tbody slot="body" slot-scope="{displayData}">
                 <tr v-for="item in displayData" :key="item.hid">
-                  <td><a v-bind:href="'http://120.78.78.174:6233/stu/downloadHomework'+item.hfilepath">{{item.htitle}}</a></td>
+                  <td><a v-bind:href="'http://120.78.78.174:6233/stu/downloadHomework'+item.hfilepath" target="_blank">{{item.htitle}}</a></td>
                   <td>{{item.cname}}</td>
                   <td>{{item.hdate}}</td>
                   <td><input type="file" v-bind:id="'file'+item.hid" style="display: none"/><button class="btn btn-file" v-on:click="upload(item.hid)">上传文件</button></td>

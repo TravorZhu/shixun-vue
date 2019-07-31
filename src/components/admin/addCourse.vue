@@ -6,7 +6,7 @@
       <!--        <small>Advanced form element</small>-->
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i>主页</a></li>
+      <li><router-link :to="'/admin'"><i class="fa fa-dashboard"></i>主页</router-link></li>
       <li><a href="#">课程操作</a></li>
       <li class="active">添加课程</li>
     </ol>

@@ -6,7 +6,7 @@
         <small>Advanced form element</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>主页</a></li>
+        <li><router-link :to="'/admin'"><i class="fa fa-dashboard"></i>主页</router-link></li>
         <li><a href="#">用户操作</a></li>
         <li class="active">删除修改用户</li>
       </ol>
@@ -19,7 +19,7 @@
               <h3 class="box-title">所有用户</h3>
               <div class="box-tools">
                 <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="按用户名搜索..."
                          v-model="filters.name.value">
 
                   <!--                  <div class="input-group-btn">-->
@@ -30,8 +30,8 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <div class="alert alert-success" hidden="hidden">删除成功</div>
-              <div class="alert alert-error" hidden="hidden"></div>
+              <div class="alert alert-success" v-if="success">删除成功</div>
+              <div class="alert alert-error" v-if="errormsg!==''">{{errormsg}}</div>
               <v-table id="example2" class="table table-bordered table-hover"
                        :data="userList"
                        :filters="filters"
@@ -96,10 +96,11 @@ export default {
     return {
       userList: [],
       errormsg: '',
+      success: '',
       currentPage: 1,
       totalPages: 0,
       filters: {
-        name: {value: '', keys: ['userid']}
+        name: {value: '', keys: ['uname']}
       },
       usermap: {}
     }

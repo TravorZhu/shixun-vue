@@ -6,7 +6,7 @@
 <!--      <small>Advanced form element</small>-->
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i>主页</a></li>
+      <li><router-link :to="'/admin'"><i class="fa fa-dashboard"></i>主页</router-link></li>
       <li><a href="#">课程操作</a></li>
       <li class="active">删除修改课程</li>
     </ol>
@@ -19,7 +19,7 @@
             <h3 class="box-title">所有课程</h3>
             <div class="box-tools">
               <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-                <input type="text" name="table_search" class="form-control pull-right" placeholder="输入课程名称..."
+                <input type="text" name="table_search" class="form-control pull-right" placeholder="按课程名搜索..."
                        v-model="filters.name.value">
 
                 <!--                  <div class="input-group-btn">-->

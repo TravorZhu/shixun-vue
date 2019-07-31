@@ -14,7 +14,7 @@
         <nav class="navbar navbar-static-top">
           <!-- Sidebar toggle button-->
           <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only">打开侧边栏</span>
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -50,7 +50,7 @@
             </div>
             <div class="pull-left info">
               <p>{{uname}}</p>
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+              <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
             </div>
           </div>
           <ul class="sidebar-menu" data-widget="tree">
@@ -84,6 +84,13 @@
       <div class="content-wrapper">
         <router-view></router-view>
       </div>
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 0.0.01
+        </div>
+        <strong>Copyright &copy; 2019 <a href="#">HQU Course</a>.</strong> All rights
+        reserved.
+      </footer>
     </div>
   </div>
 </template>

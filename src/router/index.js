@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import HelloWorld from '@/components/HelloWorld'
-// import starter from '@/components/starter'
 import login from '../components/login'
 import admin from '../components/admin/admin'
 import addUser from '../components/admin/addUser'
@@ -24,6 +22,7 @@ import addExam from '../components/teacher/addExam'
 import pushHomework from '../components/teacher/pushHomework'
 import logout from '../components/logout'
 import rollCall from '../components/teacher/rollCall'
+import submitHomeworkScore from '../components/teacher/submitHomeworkScore'
 
 Vue.use(Router)
 
@@ -189,6 +188,11 @@ export default new Router({
           path: 'rollCall',
           name: 'rollCall',
           component: rollCall
+        },
+        {
+          path: 'submitHomeworkScore',
+          name: 'submitHomeworkScore',
+          component: submitHomeworkScore
         }
       ]
     }

@@ -5,7 +5,7 @@
       成绩查询
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i>主页</a></li>
+      <li><router-link :to="'/student'"><i class="fa fa-dashboard"></i>主页</router-link></li>
       <li><a href="#" id="get-to-search-score">成绩查询</a></li>
     </ol>
   </section>

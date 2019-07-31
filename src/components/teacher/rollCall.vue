@@ -34,22 +34,23 @@
                          :data="allStudentList"
                          :currentPage.sync="currentPage"
                          :pageSize="5"
-                         @totalPagesChanged="totalPages = $event">
+                         @totalPagesChanged="totalPages = $event"
+                         style="table-layout: fixed;">
                   <thead slot="head">
                   <tr>
                     <th>ID</th>
                     <th>姓名</th>
-                    <th colspan="4">出席情况</th>
+                    <th>出席情况</th>
                   </tr>
                   </thead>
                   <tbody slot="body" slot-scope="{displayData}">
                   <tr v-for="item in displayData" :key="item.hid">
                     <td>{{item.sid}}</td>
                     <td>{{item.sname}}</td>
-                    <td><button class="btn btn-success" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'attend')">出席</button></td>
-                    <td><button class="btn btn-danger" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'absence')">无故缺席</button></td>
-                    <td><button class="btn btn-warning" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'leave')">请假</button></td>
-                    <td><button class="btn btn-facebook" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'other')">其它</button></td>
+                    <td><div class="btn-group"><button class="btn btn-success" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'attend')">出席</button>
+                    <button class="btn btn-danger" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'absence')">无故缺席</button>
+                    <button class="btn btn-warning" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'leave')">请假</button>
+                      <button class="btn btn-facebook" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'other')">其它</button></div></td>
                   </tr>
                   </tbody>
                 </v-table>
@@ -160,6 +161,8 @@ export default {
       this.allStudentList = Object.values(this.allStudentMap).map(item => item)
     },
     submit: function (sid, status) {
+      this.errormsg = ''
+      this.success = ''
       var data = {
         'uniqueToken': this.$store.token,
         'sid': sid,

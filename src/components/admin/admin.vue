@@ -15,7 +15,7 @@
       <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-          <span class="sr-only">Toggle navigation</span>
+          <span class="sr-only">打开侧边栏</span>
         </a>
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
@@ -122,6 +122,13 @@
       <router-view>
       </router-view>
     </div>
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 0.0.01
+      </div>
+      <strong>Copyright &copy; 2019 <a href="#">HQU Course</a>.</strong> All rights
+      reserved.
+    </footer>
     <!-- /.content-wrapper -->
 
   </div>
