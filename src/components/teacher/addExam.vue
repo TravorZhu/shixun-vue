@@ -22,7 +22,6 @@
             <div class="box-body">
               <div class="alert alert-success" v-if="success">{{success}}</div>
               <div class="alert alert-error" v-if="errormsg!==''">{{errormsg}}</div>
-              <form role="form">
                 <div class="form-group" id="usertype-form">
                   <label>课程</label>
                   <select class="form-control" name="state" v-model="cid" v-on:change="eid=cid+parseInt(Math.random()*100000,10)+1">
@@ -48,7 +47,6 @@
                 <div class="box-footer">
                   <button class="btn btn-primary" v-on:click="submit">提交</button>
                 </div>
-              </form>
             </div>
             <!-- /.box-body -->
           </div>
