@@ -45,7 +45,7 @@
                   <td><a v-bind:href="'http://120.78.78.174:6233/stu/downloadHomework'+item.hfilepath" target="_blank">{{item.htitle}}</a></td>
                   <td>{{item.cname}}</td>
                   <td>{{item.hdate}}</td>
-                  <td><input type="file" v-bind:id="'file'+item.hid" style="display: none"/><button class="btn btn-file" v-on:click="upload(item.hid)">上传文件</button></td>
+                  <td><input type="file" v-bind:id="'file'+item.hid" style="display: none"  v-on:change="fileUpdate(item.hid)"/><button class="btn btn-default" v-on:click="upload(item.hid)">上传文件</button><a v-if="selhid === item.hid">{{filename}}</a></td>
                   <td><button class="btn btn-facebook" v-on:click="submit(item.hid)">提交</button></td>
                 </tr>
                 </tbody>
@@ -82,7 +82,9 @@ export default {
       totalPages: 0,
       filters: {
         name: {value: '', keys: ['cname']}
-      }
+      },
+      filename: '',
+      selhid: ''
     }
   },
   methods: {
@@ -100,7 +102,6 @@ export default {
         dataType: 'json',
         type: 'POST',
         async: false,
-        // data:JSON.stringify(data),
         data: form,
         processData: false,
         contentType: false,
@@ -116,6 +117,11 @@ export default {
     upload: function (hid) {
       console.log(hid)
       $('#file' + hid).click()
+    },
+    fileUpdate: function (hid) {
+      this.selhid = hid
+      this.filename = $('#file' + hid)[0].files[0].name
+      console.log(this.filename)
     }
   },
   created () {

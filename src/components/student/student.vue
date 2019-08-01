@@ -28,7 +28,7 @@
                     <img src="../../assets/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
                       {{uname}}
-                    </p>
+                    </p><small>为明天的996奋斗中</small>
                   </li>
                   <li class="user-footer">
 

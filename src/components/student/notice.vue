@@ -5,8 +5,8 @@
         公告栏
       </h1>
       <ol class="breadcrumb">
-
-        <li class="active">公告栏</li>
+        <li><router-link :to="'/student'"><i class="fa fa-dashboard"></i>主页</router-link></li>
+        <li><a href="#" id="get-to-search-score">公告栏</a></li>
       </ol>
     </section>
     <section class="content">

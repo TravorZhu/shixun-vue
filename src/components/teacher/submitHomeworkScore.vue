@@ -28,7 +28,10 @@
               </div>
             </div>
             <br>
-            <div id="div2" style="width: 800px;margin-left:20px;margin-top: 0px"><div class="col-xs-3">
+            <div id="div2" style="width: 800px;margin-left:20px;margin-top: 0px">
+              <div class="alert alert-success" v-if="success">{{success}}</div>
+              <div class="alert alert-error" v-if="errormsg!==''">{{errormsg}}</div>
+              <div class="col-xs-3">
               课程：<select class="form-control" name="cid" id="cid" style="width: 100px;" v-model="cid" v-on:change="updateCourse">
               <option v-bind:value="item.cid" v-for="item in getCourseArr" v-bind:key="item.cid" >{{item.cname}}</option>
             </select>
@@ -69,7 +72,7 @@
                   <td>{{item.sid}}</td>
                   <td>{{item.uname}}</td>
                   <td><a v-bind:href="'http://120.78.78.174:6233/teacher/correctHomework'+item.submitfile">点击下载</a></td>
-                  <td><input type="number" v-bind:class="'score'+item.sid" /></td>
+                  <td><input type="number" v-bind:id="'score'+item.sid" /></td>
                   <td>
                     <button class="btn btn-facebook" v-on:click="submit(item.sid)">提交</button>
                   </td>
@@ -214,7 +217,7 @@ export default {
       var sdata = {
         'uniqueToken': this.$store.token,
         'hid': this.hid,
-        'sid': this.sid,
+        'sid': sid,
         'score': score
       }
       // console.log(sdata)

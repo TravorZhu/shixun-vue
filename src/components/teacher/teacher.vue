@@ -25,7 +25,7 @@
                   <img src="../../assets/user2-160x160.jpg" class="img-circle" alt="User Image">
                   <p>
                     {{username}}
-                    <small>培养优秀的学生是我的职责</small>
+                    <small>培养996的学生是我的职责</small>
                   </p>
                 </li>
                 <li class="user-footer">

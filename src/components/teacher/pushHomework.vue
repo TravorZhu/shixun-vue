@@ -49,7 +49,7 @@
               </div>
               <div class="form-group" id="percentage">
                 <label>作业分数比例</label>
-                <input type="text" class="form-control" placeholder="输入 ..." v-model="percentage">
+                <input type="number" class="form-control" placeholder="输入 ..." v-model="percentage">
               </div>
               <div class="box-footer">
                 <button class="btn btn-primary" v-on:click="submit">提交</button>

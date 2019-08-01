@@ -47,10 +47,11 @@
                   <tr v-for="item in displayData" :key="item.hid">
                     <td>{{item.sid}}</td>
                     <td>{{item.sname}}</td>
-                    <td><div class="btn-group"><button class="btn btn-success" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'attend')">出席</button>
-                    <button class="btn btn-danger" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'absence')">无故缺席</button>
-                    <button class="btn btn-warning" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'leave')">请假</button>
-                      <button class="btn btn-facebook" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'other')">其它</button></div></td>
+                    <td><div class="btn-group" v-bind:id="'stu'+item.sid"><button class="btn btn-success" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'attend',$event)">出席</button>
+                    <button class="btn btn-danger" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'absence',$event)">无故缺席</button>
+                    <button class="btn btn-warning" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'leave',$event)">请假</button>
+                      <button class="btn btn-facebook" v-bind:class="'btn btn-success stu'+ item.sid" v-on:click="submit(item.sid,'other',$event)">其它</button>
+                    </div></td>
                   </tr>
                   </tbody>
                 </v-table>
@@ -160,7 +161,8 @@ export default {
       })
       this.allStudentList = Object.values(this.allStudentMap).map(item => item)
     },
-    submit: function (sid, status) {
+    submit: function (sid, status, btn) {
+      console.log(btn)
       this.errormsg = ''
       this.success = ''
       var data = {
@@ -185,7 +187,10 @@ export default {
         success: (d) => {
           if (d.status === 200) {
             this.success = d.msg
+            var a = btn.target.outerHTML
             $('.stu' + sid).remove()
+            $('#stu' + sid).append(a)
+            $('.stu' + sid).prop('disable', 'true')
           } else {
             this.errormsg = d.msg
           }

@@ -113,6 +113,8 @@ export default {
   },
   methods: {
     refrash: function () {
+      this.courseList = []
+      this.coursemap = {}
       var data = {
         'uniqueToken': this.$store.token
       }
@@ -167,8 +169,7 @@ export default {
           // console.log(d)
           if (d.status === 200) {
             console.log(this)
-            this.methods.refrash()
-            // console.log(userlist)
+            this.refrash()
           } else {
             this.errormsg = d.msg
           }
