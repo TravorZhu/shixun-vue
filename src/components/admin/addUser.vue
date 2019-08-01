@@ -22,7 +22,6 @@
             <div class="box-body">
               <div class="alert alert-success" v-if="success">添加成功</div>
               <div class="alert alert-error" v-if="errormsg!==''">{{errormsg}}</div>
-              <form role="form">
 
                 <div class="form-group" id="usertype-form">
                   <label>用户类型</label>
@@ -49,8 +48,6 @@
                 <div class="box-footer">
                   <button type="submit" class="btn btn-primary" v-on:click="submit">提交</button>
                 </div>
-
-              </form>
             </div>
             <!-- /.box-body -->
           </div>

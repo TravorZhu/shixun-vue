@@ -24,7 +24,6 @@
           <div class="box-body">
             <div class="alert alert-success" v-if="success">修改成功</div>
             <div class="alert alert-error" v-if="errormsg!==''">{{errormsg}}</div>
-            <form role="form">
               <!--                        课程名。老师id。课程id。上课时间。课程信息-->
               <!-- text input -->
               <div class="form-group" id="cid-form">
@@ -51,7 +50,6 @@
               <div class="box-footer">
                 <button v-on:click="updateCourse" class="btn btn-primary">提交</button>
               </div>
-            </form>
           </div>
           <!-- /.box-body -->
         </div>

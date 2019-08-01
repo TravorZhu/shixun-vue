@@ -22,7 +22,6 @@
           <div class="box-body">
             <div class="alert alert-success" v-if="success">添加成功</div>
             <div class="alert alert-error" v-if="errormsg!==''">{{errormsg}}</div>
-            <form role="form">
 
               <!--                        课程名。老师id。课程id。上课时间。课程信息-->
               <!-- text input -->
@@ -49,7 +48,6 @@
               <div class="box-footer">
                 <button class="btn btn-primary" v-on:click="submit">提交</button>
               </div>
-            </form>
           </div>
           <!-- /.box-body -->
         </div>
