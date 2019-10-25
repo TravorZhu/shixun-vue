@@ -1,7 +1,6 @@
-# vue-admin-lte
+# 课务系统
 
-> A Vue.js 实训 project
-> 以丁奕辉帝国
+> 基于 Vue.js的实训项目
 
 ## Build Setup
 
