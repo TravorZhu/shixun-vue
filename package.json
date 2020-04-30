@@ -18,7 +18,7 @@
     "fastclick": "^1.0.6",
     "font-awesome": "^4.7.0",
     "ionicons": "^4.6.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-sparkline": "^2.4.0",
     "search": "^1.0.0",
     "style-loader": "^0.23.1",
